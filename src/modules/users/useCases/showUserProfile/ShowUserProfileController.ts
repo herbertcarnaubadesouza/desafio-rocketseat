@@ -3,15 +3,24 @@ import { Request, Response } from "express";
 import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase";
 
 class ShowUserProfileController {
-  constructor(private showUserProfileUseCase: ShowUserProfileUseCase) {}
+  private showUserProfileUseCase: ShowUserProfileUseCase;
+
+  constructor(showUserProfileUseCase: ShowUserProfileUseCase) {
+    this.showUserProfileUseCase = showUserProfileUseCase;
+  }
 
   handle(request: Request, response: Response): Response {
-    
-    const{user_id} = request.headers;
-    
-    const user = this.showUserProfileUseCase.execute({user_id : user_id as string});
+    try {
+      const { user_id } = request.params;
 
-    return response.status(200).json(user);
+      const user = this.showUserProfileUseCase.execute({
+        user_id: user_id as string,
+      });
+
+      return response.status(200).json(user);
+    } catch (error) {
+      return response.status(404).json({ error });
+    }
   }
 }
 
