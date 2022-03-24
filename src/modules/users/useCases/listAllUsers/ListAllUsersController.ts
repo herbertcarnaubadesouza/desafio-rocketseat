@@ -6,6 +6,9 @@ class ListAllUsersController {
   constructor(private listAllUsersUseCase: ListAllUsersUseCase) { }
 
   handle(request: Request, response: Response): Response {
+
+    // #swagger.tags = ['Users']
+
     try {
       const { user_id } = request.headers;
 

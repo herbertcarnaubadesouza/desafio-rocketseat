@@ -7,7 +7,11 @@ class CreateUserController {
 
   handle(request: Request, response: Response): Response {
 
+    // #swagger.tags = ['Users']
+
     try {
+
+      
       const { name, email } = request.body;
 
       const user = this.createUserUseCase.execute({ name, email });
