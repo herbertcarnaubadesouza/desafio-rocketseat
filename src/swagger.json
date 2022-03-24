@@ -52,6 +52,11 @@
                 ],
                 "summary": "List all users",
                 "description": "List all users",
+                "parameters": [
+                    {
+                        ""
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",
